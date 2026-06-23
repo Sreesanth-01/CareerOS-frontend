@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { registerUser } from '../api/authApi';
+import Input from '../components/Input';
 
 const Register = () => {
 

@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react'
 
 const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
+export const AuthProvider = ({children}) => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
     const [userEmail, setUserEmail] = useState("");
@@ -28,4 +28,4 @@ const AuthProvider = ({children}) => {
   )
 }
 
-export default AuthContext
+export default AuthContext;
