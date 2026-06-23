@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className='sticky w-full bg-black text-white border shadow-md'>
         <Link to="/register">Register</Link>
         <Link to="/login">Login</Link>
     </nav>

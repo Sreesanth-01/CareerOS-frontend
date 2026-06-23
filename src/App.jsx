@@ -1,11 +1,12 @@
 import React from 'react'
 import Navbar from './components/Navbar'
+import AppRoutes from './routes/AppRoutes'
 
 const App = () => {
   return (
     <div>
-      <Navbar></Navbar>
-      <div>Hello</div>
+      <Navbar />
+      <AppRoutes />
     </div>
   )
 }
