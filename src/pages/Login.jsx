@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import Input from '../components/Input'
 import { login } from '../api/authApi';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const [form,setForm] = useState({
     email:"",
     password:""
@@ -19,11 +23,13 @@ const Login = () => {
       console.log(form);
       const res = await login(form);
       console.log("Login successful");
+      navigate("/jobApplications")
     }
     catch(error){
       console.error(error);
     }
   }
+
 
   return (
     <div>
