@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Input from '../components/Input'
 import { addJobApplication } from '../api/jobApi';
+import { useNavigate } from 'react-router-dom';
 
 const AddJobApplication = () => {
 
+    const navigate = useNavigate();
     const [formData,setFormData] = useState({
         company : "",
         role : "",
@@ -50,6 +52,7 @@ const AddJobApplication = () => {
         <Input name="notes" value={formData.notes} label="Notes" placeholder="Add notes" onChange={handleChange}></Input>
         <button type='submit'>Add Application</button>
       </form>
+      <button onClick={()=>navigate("/viewJobApplications")}>view jobs</button>
     </div>
   )
 }
