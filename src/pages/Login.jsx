@@ -22,7 +22,8 @@ const Login = () => {
     try{
       console.log(form);
       const res = await login(form);
-      console.log("Login successful");
+      localStorage.setItem("token",res.data.token);
+      console.log(res.data.token);
       navigate("/jobApplications")
     }
     catch(error){
