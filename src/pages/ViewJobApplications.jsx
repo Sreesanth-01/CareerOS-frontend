@@ -22,6 +22,15 @@ const ViewJobApplications = () => {
   return (
     <div>
         <h1>Jobs</h1>
+        <ul>
+            {jobData.map((job)=>(
+                <li key={job.id}>
+                    <div>{job.companyName}</div>
+                    <div>{job.jobRole}</div>
+                    <div>{job.status}</div>
+                </li>
+            ))}
+        </ul>
     </div>
   )
 }
