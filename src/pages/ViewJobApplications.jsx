@@ -22,13 +22,19 @@ const ViewJobApplications = () => {
     }
   return (
     <div>
-        <h1>Jobs</h1>
+        <h1>Job List</h1>
         <ul>
-            {jobData.map((job)=>(
+            {jobData.map((job)=>(//companyName, jobRole, status
                 <li key={job.id}>
-                    <div>{job.companyName}</div>
-                    <div>{job.jobRole}</div>
-                    <div>{job.status}</div>
+                    <div>
+                        <h3>Company: {job.companyName}</h3>
+                        <h4>Role: {job.jobRole}</h4>
+                        <h5>Status: {job.status}</h5>
+                        <p>Applied Date: {job.appliedDate}</p>
+                        <p>Description: {job.notes}</p>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
                 </li>
             ))}
         </ul>
