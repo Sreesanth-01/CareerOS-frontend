@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Input from '../components/Input'
-import { login } from '../api/authApi';
+import { loginApi } from '../api/authApi';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 
 const Login = () => {
+
+  const {login} = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -20,10 +23,11 @@ const Login = () => {
     e.preventDefault();
 
     try{
-      console.log(form);
-      const res = await login(form);
-      localStorage.setItem("token",res.data.token);
-      console.log(res.data.token);
+      // console.log(form);
+      const res = await loginApi(form);
+      // localStorage.setItem("token",res.data.token);
+      // console.log(res.data.token);
+      login(res.data.token,form.email);
       navigate("/AddjobApplication");
     }
     catch(error){
