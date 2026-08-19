@@ -53,7 +53,7 @@ const AddJobApplication = () => {
         <Input name="notes" value={formData.notes} label="Notes" placeholder="Add notes" onChange={handleChange}></Input>
         <button type='submit'>Add Application</button>
       </form>
-      <button onClick={()=>navigate("/viewJobApplications")}>view jobs</button>
+      {/* <button onClick={()=>navigate("/viewJobApplications")}>view jobs</button> */}
     </div>
   )
 }

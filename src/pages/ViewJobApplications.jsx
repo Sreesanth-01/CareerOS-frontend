@@ -11,9 +11,10 @@ const ViewJobApplications = () => {
     const fetchJobApplications = async() =>{
         try{
             const res = await getJobApplications();
+            console.log(res.data);
             setJobData(res.data);
+            console.log(Array.isArray(jobData));
             console.log("Retreived jobs successfully");
-            console.log(jobData);
         }
         catch(error){
             console.log("Error: ",error);
