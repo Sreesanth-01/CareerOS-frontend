@@ -1,17 +1,21 @@
 import api from "./axios";
 
-export const addJobApplication = (data) =>{
+export const addJobApplication = (data) => {
     return api.post("/job",data);
 }
 
-export const getJobApplications = () =>{
+export const getJobApplications = () => {
     return api.get("/job");
 }
 
-export const editJobApplication = (id,data) =>{
+export const getJobApplicationById = (id) => {
+    return api.get(`/job/${id}`);
+}
+
+export const editJobApplication = (id,data) => {
     return api.put(`/job/${id}`,data);
 }
 
-export const deleteJobApplication = (id) =>{
+export const deleteJobApplication = (id) => {
     return api.delete(`/job/${id}`);
 }

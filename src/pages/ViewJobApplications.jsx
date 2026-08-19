@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getJobApplications } from '../api/jobApi';
+import { getJobApplicationById, getJobApplications } from '../api/jobApi';
+import { useNavigate } from 'react-router-dom';
 
 const ViewJobApplications = () => {
     const [jobData,setJobData] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         fetchJobApplications();
@@ -20,11 +22,16 @@ const ViewJobApplications = () => {
             console.log("Error: ",error);
         }
     }
+
+    const editJob = async(id)=>{
+        navigate(`/EditJobApplication/${id}`);
+    }
+
   return (
     <div>
         <h1>Job List</h1>
         <ul>
-            {jobData.map((job)=>(//companyName, jobRole, status
+            {jobData.map((job)=>(
                 <li key={job.id}>
                     <div>
                         <h3>Company: {job.companyName}</h3>
@@ -32,7 +39,7 @@ const ViewJobApplications = () => {
                         <h5>Status: {job.status}</h5>
                         <p>Applied Date: {job.appliedDate}</p>
                         <p>Description: {job.notes}</p>
-                        <button>Edit</button>
+                        <button onClick={()=>editJob(job.id)}>Edit</button>
                         <button>Delete</button>
                     </div>
                 </li>
