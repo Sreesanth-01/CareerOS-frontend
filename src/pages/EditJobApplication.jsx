@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getJobApplicationById } from '../api/jobApi';
+import { useNavigate, useParams } from 'react-router-dom'
+import { editJobApplication, getJobApplicationById } from '../api/jobApi';
 import Input from '../components/Input';
 
 const EditJobApplication = () => {
@@ -8,13 +8,19 @@ const EditJobApplication = () => {
     const [formData,setFormData] = useState({
         companyName:"",
         jobRole:"",
-        salary:0.0,
+        salary:0,
         status:"",
         appliedDate:"",
         notes:""
     })
 
-    useEffect(async()=>{
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+       fetchApplications();
+    },[id])
+
+    const fetchApplications = async() =>{
         try {
             const res = await getJobApplicationById(id);
             setFormData({
@@ -25,12 +31,32 @@ const EditJobApplication = () => {
                 appliedDate : res.data.appliedDate,
                 notes : res.data.notes
             })
+            // console.log("Salary:", formData.salary);
+            // console.log("Type:", typeof formData.salary);
         } catch (error) {
             console.error(error);
         }
-    },[])
+    }
 
-    
+    const handleChange = (e) =>{
+        // console.log("name:", e.target.name);
+        // console.log("value:", e.target.value);
+        setFormData({...formData,[e.target.name]:e.target.value});
+    }
+
+    const handleSubmit = async(e) =>{
+        e.preventDefault();
+        try {
+            const res = await editJobApplication(id,formData);
+            navigate("/ViewJobApplications");
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    // console.log("FORM:", formData);
+    // console.log("SALARY:", formData.salary);
+    // console.log("SALARY TYPE:", typeof formData.salary);
 
   return (
     <div>
@@ -51,7 +77,7 @@ const EditJobApplication = () => {
         </select>
         <Input name="appliedDate" value={formData.appliedDate} label="Applied Date" type='date' placeholder="Applied Date" onChange={handleChange}></Input>
         <Input name="notes" value={formData.notes} label="Notes" placeholder="Add notes" onChange={handleChange}></Input>
-        <button type='submit'>Add Application</button>
+        <button type='submit'>Edit Application</button>
       </form>
     </div>
   )

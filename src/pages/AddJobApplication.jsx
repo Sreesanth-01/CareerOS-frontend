@@ -9,7 +9,7 @@ const AddJobApplication = () => {
     const [formData,setFormData] = useState({
         companyName : "",
         jobRole : "",
-        salary : 0.0,
+        salary : 0,
         status : "",
         appliedDate : "",
         notes : ""
