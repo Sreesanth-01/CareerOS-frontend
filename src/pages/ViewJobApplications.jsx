@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getJobApplicationById, getJobApplications } from '../api/jobApi';
+import { deleteJobApplication, getJobApplications } from '../api/jobApi';
 import { useNavigate } from 'react-router-dom';
 
 const ViewJobApplications = () => {
@@ -27,6 +27,16 @@ const ViewJobApplications = () => {
         navigate(`/EditJobApplication/${id}`);
     }
 
+    const deleteJob = async(id) =>{
+        try {
+            const res = await deleteJobApplication(id);
+            fetchJobApplications();
+            console.log(res);
+        } catch (error) {
+            console.log("Error: ",error);
+        }
+    }
+
   return (
     <div>
         <h1>Job List</h1>
@@ -40,7 +50,7 @@ const ViewJobApplications = () => {
                         <p>Applied Date: {job.appliedDate}</p>
                         <p>Description: {job.notes}</p>
                         <button onClick={()=>editJob(job.id)}>Edit</button>
-                        <button>Delete</button>
+                        <button onClick={()=>deleteJob(job.id)}>Delete</button>
                     </div>
                 </li>
             ))}
