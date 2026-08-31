@@ -31,9 +31,9 @@ const Register = () => {
   return (
     <div>
       <div>
-        <h1>Register</h1>
+        <h1 className='text-3xl font-bold text-center mb-6'>Register</h1>
       </div>
-      <div>
+      <div className='flex fex-col'>
         <form onSubmit={handleSubmit}>
             <Input label="UserName" name="userName" value={form.userName} type="text" onChange={handleChange} placeholder="Enter Username"></Input>
             <Input label="Email" name="email" value={form.email} type="email" onChange={handleChange} placeholder="you@example.com"></Input>
