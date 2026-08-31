@@ -8,17 +8,20 @@ const Navbar = () => {
   console.log("Navbar authentication:", isAuthenticated);
 
   return (
-    <nav className='sticky w-full bg-black text-white border shadow-md'>
+    <nav className='bg-black text-white shadow-md flex items-center justify-between'>
+      <div className='px-6'>
+        <span className='text-xl font-semibold'>CareerOS</span>
+      </div>
       {!isAuthenticated ? (
-        <div>
-          <Link to="/register">Register |</Link>
-          <Link to="/login">Login</Link>
+        <div className='flex gap-6 px-6 py-4'>
+          <Link to="/register" className='font-medium hover:font-bold'>Register </Link>
+          <Link to="/login" className='font-medium hover:font-bold'>Login</Link>
         </div>
       ) : (
-        <div>
-          <Link to="/AddjobApplication">AddJobs |</Link>
-          <Link to="/ViewjobApplications">JobList |</Link>
-          <button onClick={logout}>Logout</button>
+        <div className='flex gap-6 px-6 py-4'>
+          <Link to="/AddjobApplication" className='font-medium hover:font-bold'>AddJobs</Link>
+          <Link to="/ViewjobApplications" className='font-medium hover:font-bold'>JobList</Link>
+          <button onClick={logout} className='text-red-600 px-3 font-medium  rounded-md hover:cursor-pointer hover:font-bold'>Logout</button>
         </div>
       )}
     </nav>
