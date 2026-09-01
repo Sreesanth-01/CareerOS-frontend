@@ -33,11 +33,11 @@ const AddJobApplication = () => {
     }
 
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='min-h-screen items-center justify-center px-6 flex flex-col'>
       <div>
         <h1 className='text-center text-2xl font-semibold m-6'>Add Job Application</h1>
       </div>
-      <div>
+      <div className='w-full max-w-md rounded-md shadow-sm'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
           <Input name="companyName" value={formData.companyName} label="Company" placeholder="Company Name" onChange={handleChange}></Input>
           <Input name="jobRole" value={formData.jobRole} label="Role" placeholder="Job Role" onChange={handleChange}></Input>
@@ -57,7 +57,10 @@ const AddJobApplication = () => {
           </select>
         </div>
         <Input name="appliedDate" value={formData.appliedDate} label="Applied Date" type='date' placeholder="Applied Date" onChange={handleChange}></Input>
-        <Input name="notes" value={formData.notes} label="Notes" placeholder="Add notes" onChange={handleChange}></Input>
+        <div className='flex flex-col gap-1'>
+          <label htmlFor='notes' className='font-medium'>Notes</label>
+          <textarea name='notes' value={formData.notes} placeholder='Your notes...' onChange={handleChange} className='w-full border border-gray-300 rounded-md px-3 py-2 outline-none focus:ring-1 focus:ring-black-500 focus-border-black-500'></textarea>
+        </div>
         <button type='submit' className='w-full bg-black text-white py-2 px-4 rounded-md font-medium hover:font-bold transition duration-500 cursor-pointer'>Add Application</button>
       </form>
     </div>
