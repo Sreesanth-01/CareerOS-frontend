@@ -11,6 +11,27 @@ const Dashboard = () => {
             <p className='text-gray-500 mt-2'>Take a look at an overview of your job search</p>
         </div>
 
+        {/* Summary cards */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+            <div className='bg-white p-6 rounded-lg shadow-sm'>
+                <p className='text-sm text-gray-500'>Total Applications</p>
+                <p className='text-2xl font-semibold mt-2'>24</p>
+            </div>
+            <div className='bg-white p-6 rounded-lg shadow-sm'>
+                <p className='text-sm text-gray-500'>Interviews</p>
+                <p className='text-2xl font-semibold mt-2'>8</p>
+            </div>
+            <div className='bg-white p-6 rounded-lg shadow-sm'>
+                <p className='text-sm text-gray-500'>Offers</p>
+                <p className='text-2xl font-semibold mt-2'>2</p>
+            </div>
+            <div className='bg-white p-6 rounded-lg shadow-sm'>
+                <p className='text-sm text-gray-500'>Pending</p>
+                <p className='text-2xl font-semibold mt-2'>11</p>
+            </div>
+           
+        </div>
+
         {/* Applcation area */}
         <div className='flex gap-6'>
             {/* Chart section */}
