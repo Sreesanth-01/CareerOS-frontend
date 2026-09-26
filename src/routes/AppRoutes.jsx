@@ -5,6 +5,7 @@ import Register from '../pages/Register'
 import AddJobApplication from '../pages/AddJobApplication'
 import ViewJobApplications from '../pages/ViewJobApplications'
 import EditJobApplication from '../pages/EditJobApplication'
+import Dashboard from '../pages/Dashboard'
 
 const AppRoutes = () => {
   return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
       <Route path='/' element={<Register />}></Route>
       <Route path='/register' element={<Register />}></Route>
       <Route path='/login' element={<Login />}></Route>
+      <Route path='/dashboard' element={<Dashboard />}></Route>
       <Route path='/AddjobApplication' element={<AddJobApplication />}></Route>
       <Route path='/ViewjobApplications' element={<ViewJobApplications />}></Route>
       <Route path='/EditjobApplication/:id' element={<EditJobApplication />}></Route>

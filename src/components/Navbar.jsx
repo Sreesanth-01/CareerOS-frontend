@@ -19,6 +19,7 @@ const Navbar = () => {
         </div>
       ) : (
         <div className='flex gap-6 px-6 py-4'>
+          <Link to="/dashboard" className='font-medium hover:font-bold'>Dashboard</Link>
           <Link to="/AddjobApplication" className='font-medium hover:font-bold'>AddJobs</Link>
           <Link to="/ViewjobApplications" className='font-medium hover:font-bold'>JobList</Link>
           <button onClick={logout} className='text-red-600 px-3 font-medium  rounded-md hover:cursor-pointer hover:font-bold'>Logout</button>

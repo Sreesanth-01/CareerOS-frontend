@@ -56,7 +56,7 @@ const ViewJobApplications = () => {
 
                                 <span className='shrink-0 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700'>{job.status}</span>
                             </div>
-                            
+                            <hr className='text-gray-200'></hr>
                             <div className='mt-2 grid grid-cols-2 gap-4'>
                                 <div>
                                     <p className='text-sm font-medium text-gray-400 uppercase tracking-wide'>Salary</p>
