@@ -1,4 +1,5 @@
 import React from 'react'
+import ApplicationCard from '../components/ApplicationCard'
 
 const Dashboard = () => {
   return (
@@ -46,13 +47,27 @@ const Dashboard = () => {
         </div>
 
         {/* Recent applications */}
-        <div className='w-full bg-white p-6 rounded-lg shadow-sm h-36'>
-            Recent Applications
+        <div className='bg-white p-6 rounded-lg shadow-sm'>
+        <h2 className='text-lg font-semibold mb-5'>Recent Applications</h2>
+            <div>
+                <ApplicationCard company="Google" role="Software Engineer" status="Interview" date="Sep 20, 2026"></ApplicationCard>
+                <div className='border-t border-gray-100 my-4'></div>
+                <ApplicationCard company="Microsoft" role="SDE" status="Applied" date="Sep 18, 2026"></ApplicationCard>
+                <div className='border-t border-gray-100 my-4'></div>
+                <ApplicationCard company="Zoho" role="Backend Developer" status="Rejected" date="Sep 15, 2026"></ApplicationCard>
+            </div>
         </div>
 
         {/* Upcoming */}
-        <div className='w-full bg-white p-6 rounded-lg shadow-sm h-36'>
-            Upcoming list
+        <h2 className='text-lg font-semibold'>Upcoming list</h2>
+        <div className='w-full bg-white p-6 rounded-lg shadow-sm '>
+            <div>
+                <ApplicationCard company="Google" role="Software Engineer" status="Interview" date="Sep 20, 2026"></ApplicationCard>
+                <div className='border-t border-gray-100 my-4'></div>
+                <ApplicationCard company="Microsoft" role="SDE" status="Applied" date="Sep 18, 2026"></ApplicationCard>
+                <div className='border-t border-gray-100 my-4'></div>
+                <ApplicationCard company="Zoho" role="Backend Developer" status="Rejected" date="Sep 15, 2026"></ApplicationCard>
+            </div>
         </div>
     </div>
   )
