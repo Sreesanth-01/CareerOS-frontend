@@ -1,7 +1,11 @@
 import React from 'react'
 import ApplicationCard from '../components/ApplicationCard'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
+
+    const navigate = useNavigate();
+
   return (
     <div className='min-h-screen bg-gray-50 px-6 py-10 max-w-6xl mx-auto space-y-8'>
         {/* Welcome text area */}
@@ -48,7 +52,10 @@ const Dashboard = () => {
 
         {/* Recent applications */}
         <div className='bg-white p-6 rounded-lg shadow-sm'>
-        <h2 className='text-lg font-semibold mb-5'>Recent Applications</h2>
+            <div className='flex items-center justify-between'>
+                <h2 className='text-lg font-semibold mb-5'>Recent Applications</h2>
+                <button onClick={()=>navigate("/ViewjobApplications")}className='border rounded-md px-2 mb-5 hover:cursor-pointer hover:bg-gray-100 transition'>View All</button>
+            </div>
             <div>
                 <ApplicationCard company="Google" role="Software Engineer" status="Interview" date="Sep 20, 2026"></ApplicationCard>
                 <div className='border-t border-gray-100 my-4'></div>
@@ -59,8 +66,11 @@ const Dashboard = () => {
         </div>
 
         {/* Upcoming */}
-        <h2 className='text-lg font-semibold'>Upcoming list</h2>
         <div className='w-full bg-white p-6 rounded-lg shadow-sm '>
+        <div className='flex items-center justify-between'>
+            <h2 className='text-lg font-semibold mb-5'>Upcoming list</h2>
+            <button onClick={()=>navigate("/AddJobApplication")} className='border rounded-md px-2 mb-5 hover:cursor-pointer hover:bg-gray-100 transition'>Add More</button>
+        </div>
             <div>
                 <ApplicationCard company="Google" role="Software Engineer" status="Interview" date="Sep 20, 2026"></ApplicationCard>
                 <div className='border-t border-gray-100 my-4'></div>

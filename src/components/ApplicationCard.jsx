@@ -4,7 +4,7 @@ const ApplicationCard = ({company,role,status,date}) => {
   return (
     <div className='flex items-center justify-between'>
       <div>
-        <h3 className='font-semibold'>{company}</h3>
+        <h4 className='font-semibold'>{company}</h4>
         <p className='text-sm text-gray-500'>{role}</p>
       </div>
 
