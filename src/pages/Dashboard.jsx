@@ -1,17 +1,41 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ApplicationCard from '../components/ApplicationCard'
 import { useNavigate } from 'react-router-dom'
+import { getJobApplications } from '../api/jobApi';
+import AuthContext from '../context/AuthContext';
 
 const Dashboard = () => {
 
     const navigate = useNavigate();
 
+    const {userName} = useContext(AuthContext);
+
+    const [jobList,setJobList] = useState([]);
+
+    const interviews = jobList.filter((e)=>e.status==="INTERVIEW");
+    const offers = jobList.filter((e)=>e.status==="OFFER_RECIEVED");
+    const pending = jobList.filter((e)=>e.status==="ON_HOLD");
+
+
+     useEffect(()=>{
+        fetchJobApplications();
+    },[]);
+    
+    const fetchJobApplications = async() =>{
+        try{
+            const res = await getJobApplications();
+            setJobList(res.data);
+        }
+        catch(error){
+            console.log("Error: ",error);
+        }
+    }
   return (
     <div className='min-h-screen bg-gray-50 px-6 py-10 max-w-6xl mx-auto space-y-8'>
         {/* Welcome text area */}
         <div className='mb-8'>
             <h3 className='text-2xl font-bold'>
-                Hello! <span>userName</span>
+                Hello <span>{userName || `User`}</span>!
             </h3>
             <p className='text-gray-500 mt-2'>Take a look at an overview of your job search</p>
         </div>
@@ -20,19 +44,19 @@ const Dashboard = () => {
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
                 <p className='text-sm text-gray-500'>Total Applications</p>
-                <p className='text-2xl font-semibold mt-2'>24</p>
+                <p className='text-2xl font-semibold mt-2'>{jobList.length}</p>
             </div>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
                 <p className='text-sm text-gray-500'>Interviews</p>
-                <p className='text-2xl font-semibold mt-2'>8</p>
+                <p className='text-2xl font-semibold mt-2'>{interviews.length}</p>
             </div>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
                 <p className='text-sm text-gray-500'>Offers</p>
-                <p className='text-2xl font-semibold mt-2'>2</p>
+                <p className='text-2xl font-semibold mt-2'>{offers.length}</p>
             </div>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
                 <p className='text-sm text-gray-500'>Pending</p>
-                <p className='text-2xl font-semibold mt-2'>11</p>
+                <p className='text-2xl font-semibold mt-2'>{pending.length}</p>
             </div>
            
         </div>

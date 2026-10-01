@@ -28,7 +28,7 @@ const Login = () => {
       const res = await loginApi(form);
       // localStorage.setItem("token",res.data.token);
       // console.log(res.data.token);
-      login(res.data.token,form.email);
+      login(res.data.token,form.email,res.data.userName);
       navigate("/AddjobApplication");
     }
     catch(error){

@@ -8,12 +8,15 @@ export const AuthProvider = ({children}) => {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
     const [userEmail, setUserEmail] = useState("");
+    const [userName, setUserName] = useState("");
 
-    const login = (token,email) =>{
+    const login = (token,email,name) =>{
         localStorage.setItem("token",token);
         localStorage.setItem("email",email);
+        localStorage.setItem("userName",name);
         setIsAuthenticated(true);
         setUserEmail(email);
+        setUserName(name);
     }
 
     const logout = () =>{
@@ -25,7 +28,7 @@ export const AuthProvider = ({children}) => {
     }
 
   return (
-    <AuthContext.Provider value={{isAuthenticated,login,logout,userEmail}}>
+    <AuthContext.Provider value={{isAuthenticated,login,logout,userEmail,userName}}>
         {children}
     </AuthContext.Provider>
   )
