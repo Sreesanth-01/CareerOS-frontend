@@ -16,6 +16,7 @@ const Dashboard = () => {
     const offers = jobList.filter((e)=>e.status==="OFFER_RECIEVED");
     const pending = jobList.filter((e)=>e.status==="ON_HOLD");
 
+    const sortedListByDate = jobList.toSorted((a,b)=> new Date(b.appliedDate) - new Date(a.appliedDate)).slice(0,3); //toSorted() returns a new copy while sort() modifies og.
 
      useEffect(()=>{
         fetchJobApplications();
@@ -81,11 +82,13 @@ const Dashboard = () => {
                 <button onClick={()=>navigate("/ViewjobApplications")}className='border rounded-md px-2 mb-5 hover:cursor-pointer hover:bg-gray-100 transition'>View All</button>
             </div>
             <div>
-                <ApplicationCard company="Google" role="Software Engineer" status="Interview" date="Sep 20, 2026"></ApplicationCard>
-                <div className='border-t border-gray-100 my-4'></div>
-                <ApplicationCard company="Microsoft" role="SDE" status="Applied" date="Sep 18, 2026"></ApplicationCard>
-                <div className='border-t border-gray-100 my-4'></div>
-                <ApplicationCard company="Zoho" role="Backend Developer" status="Rejected" date="Sep 15, 2026"></ApplicationCard>
+                {sortedListByDate.map((job)=>(
+                    <div>
+                        <ApplicationCard company={job.companyName} role={job.jobRole} status={job.status} date={job.appliedDate} ></ApplicationCard>
+                        <div className='border-t text-gray-100 my-3'></div>
+                    </div>
+                    
+                ))}
             </div>
         </div>
 
