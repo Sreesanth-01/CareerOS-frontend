@@ -3,6 +3,7 @@ import ApplicationCard from '../components/ApplicationCard'
 import { useNavigate } from 'react-router-dom'
 import { getJobApplications } from '../api/jobApi';
 import AuthContext from '../context/AuthContext';
+import ApplicationChart from '../components/ApplicationChart';
 
 const Dashboard = () => {
 
@@ -33,7 +34,7 @@ const Dashboard = () => {
         return acc;
     },[]);
 
-    chartData.sort((a,b)=> new Date(b.date)-new Date(a.date));
+    chartData.sort((a,b)=> new Date(a.date)-new Date(b.date));
 
     
 
@@ -85,7 +86,7 @@ const Dashboard = () => {
         <div className='flex gap-6'>
             {/* Chart section */}
             <div className='flex-1 bg-white p-6 rounded-lg shadow-sm h-64'>
-                Chart
+                <ApplicationChart data={chartData}></ApplicationChart>
             </div>
 
             {/* Status section */}
