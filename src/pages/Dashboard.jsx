@@ -18,6 +18,25 @@ const Dashboard = () => {
 
     const sortedListByDate = jobList.toSorted((a,b)=> new Date(b.appliedDate) - new Date(a.appliedDate)).slice(0,3); //toSorted() returns a new copy while sort() modifies og.
 
+    const chartData = jobList.reduce((acc,app)=>{
+        const date = app.appliedDate;
+
+        const existing = acc.find((item)=> item.date===date);
+
+        if(existing){
+            existing.count +=1;
+        }
+        else{
+            acc.push({date,count:1});
+        }
+
+        return acc;
+    },[]);
+
+    chartData.sort((a,b)=> new Date(b.date)-new Date(a.date));
+
+    
+
      useEffect(()=>{
         fetchJobApplications();
     },[]);

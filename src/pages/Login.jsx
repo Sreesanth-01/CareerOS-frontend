@@ -29,7 +29,7 @@ const Login = () => {
       // localStorage.setItem("token",res.data.token);
       // console.log(res.data.token);
       login(res.data.token,form.email,res.data.userName);
-      navigate("/AddjobApplication");
+      navigate("/Dashboard");
     }
     catch(error){
       console.error(error);
