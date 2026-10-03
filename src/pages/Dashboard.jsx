@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { getJobApplications } from '../api/jobApi';
 import AuthContext from '../context/AuthContext';
 import ApplicationChart from '../components/ApplicationChart';
+import StatusChart from '../components/StatusChart';
 
 const Dashboard = () => {
 
@@ -19,7 +20,7 @@ const Dashboard = () => {
 
     const sortedListByDate = jobList.toSorted((a,b)=> new Date(b.appliedDate) - new Date(a.appliedDate)).slice(0,3); //toSorted() returns a new copy while sort() modifies og.
 
-    const chartData = jobList.reduce((acc,app)=>{
+    const lineChartData = jobList.reduce((acc,app)=>{
         const date = app.appliedDate;
 
         const existing = acc.find((item)=> item.date===date);
@@ -34,7 +35,19 @@ const Dashboard = () => {
         return acc;
     },[]);
 
-    chartData.sort((a,b)=> new Date(a.date)-new Date(b.date));
+    lineChartData.sort((a,b)=> new Date(a.date)-new Date(b.date));
+
+    const statusCounts = jobList.reduce((acc,app)=>{
+        acc[app.status] = (acc[app.status] || 0) +1;
+        return acc;
+    },{});
+
+    const statusData = Object.entries(statusCounts).map(([status,count])=>(
+        {
+            name:status,
+            value:count
+        }
+    ));
 
     
 
@@ -86,12 +99,12 @@ const Dashboard = () => {
         <div className='flex gap-6'>
             {/* Chart section */}
             <div className='flex-1 bg-white p-6 rounded-lg shadow-sm h-64'>
-                <ApplicationChart data={chartData}></ApplicationChart>
+                <ApplicationChart data={lineChartData}></ApplicationChart>
             </div>
 
             {/* Status section */}
             <div className='w-80 bg-white p-6 rounded-lg shadow-sm h-64'>
-                Status
+                <StatusChart data={statusData}></StatusChart>
             </div>
         </div>
 

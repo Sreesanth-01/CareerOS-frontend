@@ -10,7 +10,7 @@ const ApplicationChart = ({data}) => {
             <XAxis dataKey="date" />
             <YAxis allowDecimals={false} />
             <Tooltip />
-            <Line  dataKey="count" stroke='#2563eb' strokeWidth={2} />
+            <Line  dataKey="count" stroke='#010611' strokeWidth={2} />
         </LineChart>
 
       </ResponsiveContainer>
