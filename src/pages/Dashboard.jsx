@@ -49,6 +49,17 @@ const Dashboard = () => {
         }
     ));
 
+    const roleCounts = jobList.reduce((acc,app)=>{
+        const role = app.jobRole?.trim();
+
+        if(role){
+            acc[role] = (acc[role]||0)+1;
+        }
+        return acc;
+    },{});
+
+    const topRoles = Object.entries(roleCounts).sort((a,b)=> b[1]-a[1]);
+
     
 
      useEffect(()=>{
@@ -98,12 +109,12 @@ const Dashboard = () => {
         {/* Applcation area */}
         <div className='flex gap-6'>
             {/* Chart section */}
-            <div className='flex-1 bg-white p-6 rounded-lg shadow-sm h-64'>
+            <div className='flex-1 bg-white p-6 rounded-lg shadow-sm h-auto'>
                 <ApplicationChart data={lineChartData}></ApplicationChart>
             </div>
 
             {/* Status section */}
-            <div className='w-80 bg-white p-6 rounded-lg shadow-sm h-64'>
+            <div className='w-80 bg-white p-6 rounded-lg shadow-sm h-auto'>
                 <StatusChart data={statusData}></StatusChart>
             </div>
         </div>
