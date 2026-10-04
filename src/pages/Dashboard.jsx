@@ -60,6 +60,22 @@ const Dashboard = () => {
 
     const topRoles = Object.entries(roleCounts).sort((a,b)=> b[1]-a[1]);
 
+
+    const today = new Date();
+    const beforeSevenDays = new Date(today);
+
+    beforeSevenDays.setDate(today.getDate()-6); //6 because the current day is included.
+    beforeSevenDays.setHours(0,0,0,0); //set time to midnight(start of the day)
+
+    const weekCount = jobList.reduce((acc,app)=>{
+        const date = new Date(app.appliedDate);
+
+        if(!isNaN(date.getTime()) && date>=beforeSevenDays && date<=today){
+            acc++;
+        }
+        return acc;
+    },0);
+
     
 
      useEffect(()=>{
