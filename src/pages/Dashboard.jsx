@@ -163,45 +163,50 @@ const Dashboard = () => {
 
         {/* Job search insights */}
         <div className='w-full bg-white p-6 rounded-lg shadow-sm '>
-            <div>
+            <div className='flex items-center justify-between mb-6'>
                 <div>
-                    <h2>Job Search Insights</h2>
-                    <p>Your job search at a glance</p>
+                    <h2 className='text-lg font-semibold'>Job Search Insights</h2>
+                    <p className='text-sm text-gray-500 mt-1'>Your job search at a glance</p>
                 </div>
             </div>
 
-            <div>
+            <div className='space-y-5'>
                 {/* Top Role */}
-                <div>
+                <div className='flex items-center gap-3'>
                     <div>
-                        <p>Most applied to role</p>
-                        <p>{topRoles.length ? topRoles[0][0] : "No data yet" }</p>
+                        <p className='text-sm text-gray-500'>Most applied-to role</p>
+                        <p className='font-semibold'>{topRoles.length ? topRoles[0][0] : "No data yet" }</p>
                         {topRoles.length && (
-                            <p>{topRoles[0][1]} applications</p>
+                            <p className='text-xs text-gray-500'>{topRoles[0][1]} applications</p>
                         )}
                     </div>
                 </div>
 
+                <div className="border-t border-gray-100" />
+
                 {/* Last 7 days applications */}
-                <div>
+                <div className='flex items-center gap-3'>
                   <div>
-                      <p>Last 7 days</p>
-                      <p>{weekCount} applications submitted</p>
-                      <p>{weekCount > 0 ? "Keep building your momentum" : "Time to get started"}</p>
+                      <p className='text-sm text-gray-500'>Last 7 days</p>
+                      <p className='font-semibold'>{weekCount} applications submitted</p>
+                      <p className='text-xs text-gray-500'>{weekCount > 0 ? "Keep building your momentum" : "Time to get started"}</p>
                   </div>
                 </div>
 
+                <div className="border-t border-gray-100" />
+
                 {/* Respone Rate */}
-                <div>
-                    <div>
-                        <div>
-                            <p>Response rate</p>
-                            <p>{responseRate}%</p>
+                <div className='flex items-center gap-3'>
+                    <div className='flex-1'>
+                        <div className='flex justify-between items-center'>
+                            <p className='text-sm text-gray-500'>Response rate</p>
+                            <p className='font-semibold'>{responseRate}%</p>
                         </div>
 
                         <div className='w-full bg-orange-100 h-2 rounded-full mt-2'>
                             <div className='bg-orange-500 h-2 rounded-full' style={{width:`${responseRate}%`}} />
                         </div>
+                        <p className='text-xs text-gray-500 mt-1'>{respondedCount} of {jobList.length} applications</p>
                     </div>
                 </div>
             </div>
