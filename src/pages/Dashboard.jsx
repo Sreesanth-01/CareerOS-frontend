@@ -5,7 +5,7 @@ import { getJobApplications } from '../api/jobApi';
 import AuthContext from '../context/AuthContext';
 import ApplicationChart from '../components/ApplicationChart';
 import StatusChart from '../components/StatusChart';
-
+import {Lightbulb, BriefcaseBusiness, TrendingUp, MessagesSquare} from 'lucide-react';
 const Dashboard = () => {
 
     const navigate = useNavigate();
@@ -168,11 +168,17 @@ const Dashboard = () => {
                     <h2 className='text-lg font-semibold'>Job Search Insights</h2>
                     <p className='text-sm text-gray-500 mt-1'>Your job search at a glance</p>
                 </div>
+                <div>
+                    <Lightbulb className="text-amber-500" />
+                </div>
             </div>
 
             <div className='space-y-5'>
                 {/* Top Role */}
                 <div className='flex items-center gap-3'>
+                    <div className='bg-blue-50 p-3 rounded-lg'>
+                        <BriefcaseBusiness  />
+                    </div>
                     <div>
                         <p className='text-sm text-gray-500'>Most applied-to role</p>
                         <p className='font-semibold'>{topRoles.length ? topRoles[0][0] : "No data yet" }</p>
@@ -186,6 +192,9 @@ const Dashboard = () => {
 
                 {/* Last 7 days applications */}
                 <div className='flex items-center gap-3'>
+                    <div className='bg-green-50 p-3 rounded-lg'>
+                        <TrendingUp />
+                    </div>
                   <div>
                       <p className='text-sm text-gray-500'>Last 7 days</p>
                       <p className='font-semibold'>{weekCount} applications submitted</p>
@@ -197,6 +206,9 @@ const Dashboard = () => {
 
                 {/* Respone Rate */}
                 <div className='flex items-center gap-3'>
+                    <div className='bg-orange-50 p-3 rounded-lg'>
+                        <MessagesSquare />
+                    </div>
                     <div className='flex-1'>
                         <div className='flex justify-between items-center'>
                             <p className='text-sm text-gray-500'>Response rate</p>
