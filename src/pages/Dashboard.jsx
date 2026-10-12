@@ -76,6 +76,15 @@ const Dashboard = () => {
         return acc;
     },0);
 
+    const respondedStatuses = [
+        "INTERVIEW","OFFER_RECIEVED","REJECTED"
+    ]// for calculating the response rate. Any of the above status implies a response recieved.
+
+    const respondedCount = jobList.filter((app)=>{
+        respondedStatuses.includes(app.status);
+    }).length;
+
+    const responseRate = jobList.length ? Math.round((respondedCount/jobList.length)*100) : 0;
     
 
      useEffect(()=>{
@@ -154,16 +163,24 @@ const Dashboard = () => {
 
         {/* Upcoming */}
         <div className='w-full bg-white p-6 rounded-lg shadow-sm '>
-        <div className='flex items-center justify-between'>
-            <h2 className='text-lg font-semibold mb-5'>Upcoming list</h2>
-            <button onClick={()=>navigate("/AddJobApplication")} className='border rounded-md px-2 mb-5 hover:cursor-pointer hover:bg-gray-100 transition'>Add More</button>
-        </div>
             <div>
-                <ApplicationCard company="Google" role="Software Engineer" status="Interview" date="Sep 20, 2026"></ApplicationCard>
-                <div className='border-t border-gray-100 my-4'></div>
-                <ApplicationCard company="Microsoft" role="SDE" status="Applied" date="Sep 18, 2026"></ApplicationCard>
-                <div className='border-t border-gray-100 my-4'></div>
-                <ApplicationCard company="Zoho" role="Backend Developer" status="Rejected" date="Sep 15, 2026"></ApplicationCard>
+                <div>
+                    <h2>Job Search Insights</h2>
+                    <p>Your job search at a glance</p>
+                </div>
+            </div>
+
+            <div>
+                {/* Top Role */}
+                <div>
+                    <div>
+                        <p>Most applied to role</p>
+                        <p>{topRoles.length ? topRoles[0][0] : "No data yet" }</p>
+                        {topRoles.length && (
+                            <p>{topRoles[0][1]} applications</p>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
