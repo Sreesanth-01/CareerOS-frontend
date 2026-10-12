@@ -161,7 +161,7 @@ const Dashboard = () => {
             </div>
         </div>
 
-        {/* Upcoming */}
+        {/* Job search insights */}
         <div className='w-full bg-white p-6 rounded-lg shadow-sm '>
             <div>
                 <div>
@@ -179,6 +179,29 @@ const Dashboard = () => {
                         {topRoles.length && (
                             <p>{topRoles[0][1]} applications</p>
                         )}
+                    </div>
+                </div>
+
+                {/* Last 7 days applications */}
+                <div>
+                  <div>
+                      <p>Last 7 days</p>
+                      <p>{weekCount} applications submitted</p>
+                      <p>{weekCount > 0 ? "Keep building your momentum" : "Time to get started"}</p>
+                  </div>
+                </div>
+
+                {/* Respone Rate */}
+                <div>
+                    <div>
+                        <div>
+                            <p>Response rate</p>
+                            <p>{responseRate}%</p>
+                        </div>
+
+                        <div className='w-full bg-orange-100 h-2 rounded-full mt-2'>
+                            <div className='bg-orange-500 h-2 rounded-full' style={{width:`${responseRate}%`}} />
+                        </div>
                     </div>
                 </div>
             </div>
