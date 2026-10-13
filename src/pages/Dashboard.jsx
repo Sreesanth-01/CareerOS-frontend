@@ -180,13 +180,18 @@ const Dashboard = () => {
                 <button onClick={()=>navigate("/ViewjobApplications")}className=' rounded-lg px-2 mb-5 hover:cursor-pointer hover:bg-gray-100 transition'><ArrowUpRight /></button>
             </div>
             <div>
-                {sortedListByDate.map((job)=>(
+                {sortedListByDate.length ? sortedListByDate.map((job)=>(
                     <div>
                         <ApplicationCard company={job.companyName} role={job.jobRole} status={job.status} date={job.appliedDate} ></ApplicationCard>
                         <div className='border-t text-gray-100 my-3'></div>
                     </div>
                     
-                ))}
+                ))
+            :
+            <div>
+                <p className='text-center'>No applications added yet</p>
+            </div>
+            }
             </div>
         </div>
 
@@ -211,7 +216,7 @@ const Dashboard = () => {
                     <div>
                         <p className='text-sm text-gray-500'>Most applied-to role</p>
                         <p className='font-semibold'>{topRoles.length ? topRoles[0][0] : "No data yet" }</p>
-                        {topRoles.length && (
+                        {topRoles.length>0 && (
                             <p className='text-xs text-gray-500'>{topRoles[0][1]} applications</p>
                         )}
                     </div>

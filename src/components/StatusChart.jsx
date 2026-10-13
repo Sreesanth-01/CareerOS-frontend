@@ -2,6 +2,13 @@ import React from 'react'
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 
 const StatusChart = ({data}) => {
+
+  if(data.length===0){
+    return(
+      <p className='mt-5 text-center'>Add applications to see status</p>
+    )
+  }
+
     const COLORS = [
   "#002859",
   "#520540",

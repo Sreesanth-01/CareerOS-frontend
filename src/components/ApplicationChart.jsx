@@ -2,7 +2,11 @@ import React from 'react'
 import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
 
 const ApplicationChart = ({data}) => {
-  
+  if(data.length===0){
+    return (
+      <p className='text-center'>No activity yet</p>
+    )
+  }
   return (
     <div>
       <ResponsiveContainer width="100%" height={250}>
