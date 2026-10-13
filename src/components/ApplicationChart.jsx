@@ -5,10 +5,10 @@ const ApplicationChart = ({data}) => {
   return (
     <div>
       <ResponsiveContainer width="100%" height={250}>
-        <LineChart data={data}>
+        <LineChart data={data}  margin={{ top: 10, right: 10, left: -40, bottom: 5 }}>
             
-            <XAxis dataKey="date" />
-            <YAxis allowDecimals={false} />
+            <XAxis dataKey="date" tick={{fontSize:12, fill:"#6B7280"}} tickMargin={8} />
+            <YAxis allowDecimals={false} tick={{fontSize:12,fill:"#6B7280"}} />
             <Tooltip />
             <Line  dataKey="count" stroke='#010611' strokeWidth={2} />
         </LineChart>
