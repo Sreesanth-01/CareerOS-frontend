@@ -5,7 +5,7 @@ import { getJobApplications } from '../api/jobApi';
 import AuthContext from '../context/AuthContext';
 import ApplicationChart from '../components/ApplicationChart';
 import StatusChart from '../components/StatusChart';
-import {Lightbulb, BriefcaseBusiness, TrendingUp, MessagesSquare, CalendarCheck, Trophy , Clock, ChartNoAxesCombined, PieChart} from 'lucide-react';
+import {Lightbulb, BriefcaseBusiness, TrendingUp, MessagesSquare, CalendarCheck, Trophy , Clock, ChartNoAxesCombined, PieChart, ArrowUpRight} from 'lucide-react';
 const Dashboard = () => {
 
     const navigate = useNavigate();
@@ -140,29 +140,31 @@ const Dashboard = () => {
         <div className='flex gap-6'>
             {/* Chart section */}
             <div className='flex-1 bg-white p-6 rounded-lg shadow-sm h-auto'>
-                <div className='flex items-center justify-between'>
+                
+                <div className='flex items-center gap-3'>
+                    <div className='bg-gray-100 p-3 rounded-lg'>
+                        <ChartNoAxesCombined />
+                    </div>
                     <div>
                         <h2 className='text-lg font-semibold'>Application Activity</h2>
                         <p className='text-sm text-gray-500 mb-3'>Your applications over time</p>
                     </div>
-                    <div className='bg-orange-50 p-2 rounded-lg'>
-                        <ChartNoAxesCombined size={25} />
-                    </div>
+                    
                 </div>
                 <ApplicationChart data={lineChartData}></ApplicationChart>
             </div>
 
             {/* Status section */}
             <div className='w-80 bg-white p-6 rounded-lg shadow-sm h-auto'>
-                <div className='flex items-center justify-between'>
+                <div className='flex items-center gap-3'>
+                     <div className='bg-gray-100 p-3 rounded-lg'>
+                        <PieChart />
+                    </div>
                     <div>
                         <h2 className='text-lg font-semibold'>Application Status</h2>
                         <p className='text-sm text-gray-500'>Status of your applications</p>
                     </div>
 
-                    <div className='bg-red-50 p-2 rounded-lg'>
-                        <PieChart size={25} />
-                    </div>
                 </div>
                 <StatusChart data={statusData}></StatusChart>
             </div>
@@ -171,8 +173,11 @@ const Dashboard = () => {
         {/* Recent applications */}
         <div className='bg-white p-6 rounded-lg shadow-sm'>
             <div className='flex items-center justify-between'>
-                <h2 className='text-lg font-semibold mb-5'>Recent Applications</h2>
-                <button onClick={()=>navigate("/ViewjobApplications")}className='border rounded-md px-2 mb-5 hover:cursor-pointer hover:bg-gray-100 transition'>View All</button>
+                <div className='mb-5'>
+                    <h2 className='text-lg font-semibold'>Recent Applications</h2>
+                    <p className='text-sm text-gray-500'>Your last few applications</p>
+                </div>
+                <button onClick={()=>navigate("/ViewjobApplications")}className=' rounded-lg px-2 mb-5 hover:cursor-pointer hover:bg-gray-100 transition'><ArrowUpRight /></button>
             </div>
             <div>
                 {sortedListByDate.map((job)=>(
