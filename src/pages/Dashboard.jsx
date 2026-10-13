@@ -5,7 +5,7 @@ import { getJobApplications } from '../api/jobApi';
 import AuthContext from '../context/AuthContext';
 import ApplicationChart from '../components/ApplicationChart';
 import StatusChart from '../components/StatusChart';
-import {Lightbulb, BriefcaseBusiness, TrendingUp, MessagesSquare} from 'lucide-react';
+import {Lightbulb, BriefcaseBusiness, TrendingUp, MessagesSquare, CalendarCheck, Trophy , Clock, ChartNoAxesCombined, PieChart} from 'lucide-react';
 const Dashboard = () => {
 
     const navigate = useNavigate();
@@ -113,20 +113,25 @@ const Dashboard = () => {
         {/* Summary cards */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
-                <p className='text-sm text-gray-500'>Total Applications</p>
+                <BriefcaseBusiness />
                 <p className='text-2xl font-semibold mt-2'>{jobList.length}</p>
+                <p className='text-sm text-gray-500'>Total Applications</p>
             </div>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
-                <p className='text-sm text-gray-500'>Interviews</p>
+                
+                <CalendarCheck />
                 <p className='text-2xl font-semibold mt-2'>{interviews.length}</p>
+                <p className='text-sm text-gray-500'>Interviews</p>
             </div>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
-                <p className='text-sm text-gray-500'>Offers</p>
+                <Trophy />
                 <p className='text-2xl font-semibold mt-2'>{offers.length}</p>
+                <p className='text-sm text-gray-500'>Offers</p>
             </div>
             <div className='bg-white p-6 rounded-lg shadow-sm'>
-                <p className='text-sm text-gray-500'>Pending</p>
+                <Clock />
                 <p className='text-2xl font-semibold mt-2'>{pending.length}</p>
+                <p className='text-sm text-gray-500'>Pending</p>
             </div>
            
         </div>
@@ -135,11 +140,30 @@ const Dashboard = () => {
         <div className='flex gap-6'>
             {/* Chart section */}
             <div className='flex-1 bg-white p-6 rounded-lg shadow-sm h-auto'>
+                <div className='flex items-center justify-between'>
+                    <div>
+                        <h2 className='text-lg font-semibold'>Application Activity</h2>
+                        <p className='text-sm text-gray-500 mb-3'>Your applications over time</p>
+                    </div>
+                    <div className='bg-orange-50 p-2 rounded-lg'>
+                        <ChartNoAxesCombined size={25} />
+                    </div>
+                </div>
                 <ApplicationChart data={lineChartData}></ApplicationChart>
             </div>
 
             {/* Status section */}
             <div className='w-80 bg-white p-6 rounded-lg shadow-sm h-auto'>
+                <div className='flex items-center justify-between'>
+                    <div>
+                        <h2 className='text-lg font-semibold'>Application Status</h2>
+                        <p className='text-sm text-gray-500'>Status of your applications</p>
+                    </div>
+
+                    <div className='bg-red-50 p-2 rounded-lg'>
+                        <PieChart size={25} />
+                    </div>
+                </div>
                 <StatusChart data={statusData}></StatusChart>
             </div>
         </div>

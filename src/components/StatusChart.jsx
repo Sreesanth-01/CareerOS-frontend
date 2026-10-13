@@ -3,11 +3,11 @@ import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recha
 
 const StatusChart = ({data}) => {
     const COLORS = [
-  "#60a5fa",
-  "#fbbf24",
-  "#34d399",
-  "#f87171",
-  "#a78bfa"
+  "#002859",
+  "#520540",
+  "#01633fe0",
+  "#600101",
+  "#17015c"
 ];
   return (
     <div>
