@@ -59,9 +59,9 @@ const ViewJobApplications = () => {
             </ul>
         </div>
         ) : (
-            <div>
-                <p>No applications yet</p>
-                <p>Add an application to get started.</p>
+            <div className='text-center align-middle'>
+                <p>No applications yet. Add an application to get started</p>
+               
             </div>
         )}
 
