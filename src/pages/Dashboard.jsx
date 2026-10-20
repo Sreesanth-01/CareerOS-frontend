@@ -182,7 +182,7 @@ const Dashboard = () => {
             <div>
                 {sortedListByDate.length ? sortedListByDate.map((job)=>(
                     <div>
-                        <ApplicationCard company={job.companyName} role={job.jobRole} status={job.status} date={job.appliedDate} ></ApplicationCard>
+                        <ApplicationCard application={job} ></ApplicationCard>
                         <div className='border-t text-gray-100 my-3'></div>
                     </div>
                     
