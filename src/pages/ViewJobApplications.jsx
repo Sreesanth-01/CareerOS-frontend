@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { deleteJobApplication, getJobApplications } from '../api/jobApi';
 import { useNavigate } from 'react-router-dom';
 import MyApplicationCard from '../components/MyApplicationCard';
+import JobDetailsModal from '../components/JobDetailsModal';
 
 const ViewJobApplications = () => {
     const [jobData,setJobData] = useState([]);
@@ -66,7 +67,7 @@ const ViewJobApplications = () => {
 
         {/* detaisl modal */}
         {selectedJob && (
-            <p>Details</p>
+            <JobDetailsModal application={selectedJob} onClose={()=>setSelectedJob(null)} ></JobDetailsModal>
         )}
     </div>
   )

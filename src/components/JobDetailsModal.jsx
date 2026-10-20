@@ -41,6 +41,7 @@ const JobDetailsModal = ({application,onClose}) => {
             <p>{application.notes}</p>
         </div>
       </div>
+      <button onClick={()=>onClose(application)}>Close</button>
     </div>
   )
 }
