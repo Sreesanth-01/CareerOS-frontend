@@ -47,6 +47,7 @@ const ViewJobApplications = () => {
             <h1 className='text-3xl font-semibold mb-1'>My Applications</h1>
             <p className='text-sm text-gray-500'>View and manage your job applications</p>
         </div>
+        
         {jobData.length > 0 ?(
         <div className='w-full max-w-2-xl'>
             <ul className='space-y-5'>
@@ -65,7 +66,7 @@ const ViewJobApplications = () => {
             </div>
         )}
 
-        {/* detaisl modal */}
+         {/* details modal */}
         {selectedJob && (
             <JobDetailsModal application={selectedJob} onClose={()=>setSelectedJob(null)} ></JobDetailsModal>
         )}
