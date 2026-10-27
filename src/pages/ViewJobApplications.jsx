@@ -34,6 +34,7 @@ const ViewJobApplications = () => {
     const deleteJob = async(id) =>{
         try {
             const res = await deleteJobApplication(id);
+            setSelectedJob(null);
             fetchJobApplications();
             console.log(res);
         } catch (error) {
@@ -68,7 +69,7 @@ const ViewJobApplications = () => {
 
          {/* details modal */}
         {selectedJob && (
-            <JobDetailsModal application={selectedJob} onClose={()=>setSelectedJob(null)} ></JobDetailsModal>
+            <JobDetailsModal application={selectedJob} onClose={()=>setSelectedJob(null)} onEdit={editJob} onDelete={deleteJob} ></JobDetailsModal>
         )}
     </div>
   )
