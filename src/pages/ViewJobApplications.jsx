@@ -43,7 +43,7 @@ const ViewJobApplications = () => {
 
   return (
     <div className='min-h-screen bg-gray-50 py-10 px-4'>
-        <div className='max-w-3xl mx-auto mb-8'>
+        <div className='w-full mb-8'>
             <h1 className='text-3xl font-semibold mb-1'>My Applications</h1>
             <p className='text-sm text-gray-500'>View and manage your job applications</p>
         </div>
