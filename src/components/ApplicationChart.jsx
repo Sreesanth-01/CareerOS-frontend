@@ -2,9 +2,11 @@ import React from 'react'
 import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
 
 const ApplicationChart = ({data}) => {
-  if(data.length===0){
+  if(data.length<=1){
     return (
-      <p className='text-center'>No activity yet</p>
+      <div>
+        <p className='text-center'>Chart not available. Add more applications to view chart</p>
+      </div>
     )
   }
   return (
