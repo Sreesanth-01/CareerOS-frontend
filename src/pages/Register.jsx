@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { registerUser } from '../api/authApi';
 import Input from '../components/Input';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
@@ -53,15 +54,24 @@ const Register = () => {
     setErrors(validationErrors);
 
     if(Object.keys(validationErrors).length>0){
+      toast.error("Please correct the errors in the form.");
       return;
     }
     
 
     try{
       const response = await registerUser(form);
+      toast.success("Registration successfull");
       console.log("Registration successfull");
+      setForm({
+        userName:"",
+        email:"",
+        mobile:"",
+        password:""
+      });
     }
     catch(error){
+      toast.error(error.response?.data?.message||"Registration failed. Please try again.")
       console.error("Registration error");
     }
 
