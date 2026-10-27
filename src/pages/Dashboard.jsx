@@ -15,7 +15,7 @@ const Dashboard = () => {
     const [jobList,setJobList] = useState([]);
 
     const interviews = jobList.filter((e)=>e.status==="INTERVIEW");
-    const offers = jobList.filter((e)=>e.status==="OFFER_RECIEVED");
+    const offers = jobList.filter((e)=>e.status==="OFFER_RECIEVED" ||e.status==="ACCEPTED");
     const pending = jobList.filter((e)=>e.status==="ON_HOLD");
 
     const sortedListByDate = jobList.toSorted((a,b)=> new Date(b.appliedDate) - new Date(a.appliedDate)).slice(0,3); //toSorted() returns a new copy while sort() modifies og.
@@ -77,7 +77,7 @@ const Dashboard = () => {
     },0);
 
     const respondedStatuses = [
-        "INTERVIEW","OFFER_RECIEVED","REJECTED"
+        "INTERVIEW","OFFER_RECIEVED","ACCEPTED","REJECTED"
     ];// for calculating the response rate. Any of the above status implies a response recieved.
 
     const respondedCount = jobList.filter((app)=>
