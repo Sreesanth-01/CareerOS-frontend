@@ -17,7 +17,7 @@ const MyApplicationCard = ({application}) => {
         <p className='inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-xs font-medium text-gray-700'>{application.status}</p>
       </div>
       <div>
-        <p className='flex items-center text-gray-500'><MapPin size={15} className='text-gray-500' />location</p>
+        <p className='flex items-center text-gray-500'><MapPin size={15} className='text-gray-500' />{application.location}</p>
         <p className='text-sm'>{application.appliedDate}</p>
       </div>
       <div>

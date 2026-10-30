@@ -38,11 +38,11 @@ const JobDetailsModal = ({application,onClose,onEdit,onDelete}) => {
                 <div className='mt-4 grid grid-cols-2 gap-6'>
                     <div>
                         <p className='flex items-center gap-2 text-sm text-gray-500'><MapPin size={18} /> Location</p>
-                        <p className='mt-2 text-base font-medium text-gray-900'>location</p>
+                        <p className='mt-2 text-base font-medium text-gray-900'>{application.location || "Not specified"}</p>
                     </div>
                     <div>
                         <p className='flex items-center gap-2 text-sm text-gray-500'><Workflow size={18} /> WorkMode</p>
-                        <p className='mt-2 text-base font-medium text-gray-900'>workMode</p>
+                        <p className='mt-2 text-base font-medium text-gray-900'>{application.workMode}</p>
                     </div>
                 </div>
 
