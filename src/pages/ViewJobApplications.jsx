@@ -3,6 +3,7 @@ import { deleteJobApplication, getJobApplications } from '../api/jobApi';
 import { useNavigate } from 'react-router-dom';
 import MyApplicationCard from '../components/MyApplicationCard';
 import JobDetailsModal from '../components/JobDetailsModal';
+import { toast } from 'react-toastify';
 
 const ViewJobApplications = () => {
     const [jobData,setJobData] = useState([]);
@@ -34,10 +35,12 @@ const ViewJobApplications = () => {
     const deleteJob = async(id) =>{
         try {
             const res = await deleteJobApplication(id);
+            toast.success("Deleted Job Application successfully.");
             setSelectedJob(null);
             fetchJobApplications();
             console.log(res);
         } catch (error) {
+            toast.error("Couldn't delete application, Please try later");
             console.log("Error: ",error);
         }
     }

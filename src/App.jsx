@@ -9,7 +9,7 @@ const App = () => {
     <div>
       <Navbar />
       <AppRoutes />
-      <ToastContainer position='top-right' autoClose={3000} pauseOnHover={true} />
+      <ToastContainer position='top-right' autoClose={3000} pauseOnHover={false}/>
     </div>
   )
 }
