@@ -77,7 +77,7 @@ const Dashboard = () => {
     },0);
 
     const respondedStatuses = [
-        "INTERVIEW","OFFER_RECIEVED","ACCEPTED","REJECTED"
+        "INTERVIEW","OFFER_RECIEVED","ACCEPTED","REJECTED","ASSESSMENT"
     ];// for calculating the response rate. Any of the above status implies a response recieved.
 
     const respondedCount = jobList.filter((app)=>

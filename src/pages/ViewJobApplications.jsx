@@ -50,7 +50,7 @@ const ViewJobApplications = () => {
         </div>
         
         {jobData.length > 0 ?(
-        <div className='w-full max-w-2-xl'>
+        <div className='w-full max-w-none'>
             <ul className='space-y-5'>
                 {jobData.map((job)=>(
                     <div onClick={()=>setSelectedJob(job)}>
