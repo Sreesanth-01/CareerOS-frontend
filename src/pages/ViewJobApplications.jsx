@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import MyApplicationCard from '../components/MyApplicationCard';
 import JobDetailsModal from '../components/JobDetailsModal';
 import { toast } from 'react-toastify';
+import FiltersModal from '../components/FiltersModal';
 
 const ViewJobApplications = () => {
     const [jobData,setJobData] = useState([]);
@@ -78,7 +79,7 @@ const ViewJobApplications = () => {
         )}
         <button onClick={()=>setShowFilters(!showFilters)}>Filters</button>
         {showFilters && (
-            <div>Show filters</div>
+            <FiltersModal />
         )}
     </div>
   )
