@@ -79,7 +79,7 @@ const ViewJobApplications = () => {
         )}
         <button onClick={()=>setShowFilters(!showFilters)}>Filters</button>
         {showFilters && (
-            <FiltersModal />
+            <FiltersModal  onClose={()=>setShowFilters(false)}/>
         )}
     </div>
   )

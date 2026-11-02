@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Input from './Input'
+import { Filter, X } from 'lucide-react';
 
-const FiltersModal = () => {
+const FiltersModal = ({onClose}) => {
 
     const [filterBy,setFilterBy] = useState(null);
     const [sortBy,setSortBy] = useState("desc");
@@ -12,6 +13,15 @@ const FiltersModal = () => {
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4'>
       <div className='relative w-full max-w-xl max-h-[85vh] overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-xl'>
+        <div className='flex items-center justify-between p-2'>
+            <div className='flex gap-2'>
+                <Filter className='border rounded'/>
+                <h1 className='font-semibold'>Filter and Sort</h1>
+            </div>
+            <div className='cursor-pointer rounded-md p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900'>
+                <X size={18} onClick={onClose}/>
+            </div>
+        </div>
         <div className='p-4'>
             <h2 className='font-semibold'>Filter By:</h2>
             <div className='flex gap-4'>
@@ -52,6 +62,7 @@ const FiltersModal = () => {
         ) }
 
       </div>
+      <div className='border-t text-gray-300 my-1'></div>
       <div className='p-4'>
         <h2 className='font-semibold'>Sort By:</h2>
         <div className='flex gap-4'>
