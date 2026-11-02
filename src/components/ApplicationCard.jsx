@@ -11,7 +11,9 @@ const ApplicationCard = ({application}) => {
         <div>
           <h4 className='text-lg font-semibold'>{application.companyName}</h4>
           <p className='text-sm '>{application.jobRole}</p>
-          <p className='text-sm text-gray-500'>{application.appliedDate}</p>
+          <p className='text-sm text-gray-500'>{new Date(application.appliedDate).toLocaleDateString("en-IN",{
+            day:"2-digit",month:"short",year:"numeric"
+          })}</p>
         </div>
       </div>
 
