@@ -18,7 +18,9 @@ const MyApplicationCard = ({application}) => {
       </div>
       <div>
         <p className='flex items-center text-gray-500'><MapPin size={15} className='text-gray-500' />{application.location || "Not specified"}</p>
-        <p className='text-sm'>{application.appliedDate}</p>
+        <p className='text-sm'>{new Date(application.appliedDate).toLocaleDateString("en-IN",
+          {day:"numeric",month:"short",year:"numeric"}
+        )}</p>
       </div>
       <div>
         <ChevronRight />
