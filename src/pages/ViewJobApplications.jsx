@@ -9,6 +9,8 @@ const ViewJobApplications = () => {
     const [jobData,setJobData] = useState([]);
     const navigate = useNavigate();
 
+    const [showFilters, setShowFilters] = useState(false);
+
     const [selectedJob,setSelectedJob] = useState(null);
 
     useEffect(()=>{
@@ -73,6 +75,10 @@ const ViewJobApplications = () => {
          {/* details modal */}
         {selectedJob && (
             <JobDetailsModal application={selectedJob} onClose={()=>setSelectedJob(null)} onEdit={editJob} onDelete={deleteJob} ></JobDetailsModal>
+        )}
+        <button onClick={()=>setShowFilters(!showFilters)}>Filters</button>
+        {showFilters && (
+            <div>Show filters</div>
         )}
     </div>
   )
