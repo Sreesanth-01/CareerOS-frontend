@@ -31,7 +31,9 @@ const JobDetailsModal = ({application,onClose,onEdit,onDelete}) => {
                     </div>
                     <div>
                         <p className='flex items-center gap-2 text-sm text-gray-500'><Calendar size={18} /> Applied date</p>
-                        <p className='mt-2 text-base font-medium text-gray-900'>{application.appliedDate}</p>
+                        <p className='mt-2 text-base font-medium text-gray-900'>{new Date(application.appliedDate).toLocaleDateString("en-IN",{
+                            day:"2-digit",month:"short",year:"numeric"
+                        })}</p>
                     </div>
                 </div>
 
