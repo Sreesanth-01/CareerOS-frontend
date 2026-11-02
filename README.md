@@ -4,7 +4,5 @@ Description: A system that manages all the career related things, for example - 
 
 Target users: Graduates, Freshers and those who seek to track their career.
 
-Phase 1: MVP
-        #LOGIN
-        #REGISTER
-        #JOB TRACKER
+Backend Repo: 
+https://github.com/Sreesanth-01/CareerOS-backend
