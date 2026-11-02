@@ -21,7 +21,7 @@ const Dashboard = () => {
     const sortedListByDate = jobList.toSorted((a,b)=> new Date(b.appliedDate) - new Date(a.appliedDate)).slice(0,3); //toSorted() returns a new copy while sort() modifies og.
 
     const lineChartData = jobList.reduce((acc,app)=>{
-        const date = app.appliedDate;
+        const date = new Date(app.appliedDate).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"2-digit"});
 
         const existing = acc.find((item)=> item.date===date);
 
