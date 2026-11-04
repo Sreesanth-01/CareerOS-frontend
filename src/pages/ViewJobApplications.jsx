@@ -79,7 +79,7 @@ const ViewJobApplications = () => {
         return true; //if both no filter, take all. 
     });
 
-    const sortedFilteredJobs = filteredJobs.sort((a,b)=>{
+    const sortedFilteredJobs = filteredJobs.toSorted((a,b)=>{
         const dateA = new Date(a.appliedDate);
         const dateB = new Date(b.appliedDate);
 
