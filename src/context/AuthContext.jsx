@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { isTokenValid } from '../utils/auth';
 
 const AuthContext = createContext();
 
@@ -9,6 +10,18 @@ export const AuthProvider = ({children}) => {
     const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
     const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
+
+     useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (isTokenValid(token)) {
+            setIsAuthenticated(true);
+        } else {
+            logout();
+        }
+
+        setLoading(false);
+    }, []);
 
     const login = (token,email,name) =>{
         localStorage.setItem("token",token);
