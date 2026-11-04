@@ -17,8 +17,8 @@ const ViewJobApplications = () => {
 
     const [filters,setFilters] = useState({
         filterBy : "none",
-        sortBy : "desc",
-        status : "SAVED",
+        sortBy : "none",
+        status : "",
         fromDate : "",
         toDate : ""
     });
@@ -86,6 +86,8 @@ const ViewJobApplications = () => {
         return filters.sortBy === "asc" ? dateA - dateB : dateB - dateA;
     });
 
+    const displayedJobs = filters.sortBy === "none" ? filteredJobs : sortedFilteredJobs ;
+
   return (
     <div className='min-h-screen bg-gray-50 py-10 px-4'>
         <div className='flex items-center justify-between'>
@@ -98,10 +100,10 @@ const ViewJobApplications = () => {
             </div>
         </div>
         
-        {jobData.length > 0 ?(
+        {displayedJobs.length > 0 ?(
         <div className='w-full max-w-none'>
             <ul className='space-y-5'>
-                {jobData.map((job)=>(
+                {displayedJobs.map((job)=>(
                     <div onClick={()=>setSelectedJob(job)}>
                         <MyApplicationCard application={job}></MyApplicationCard>
                         <div className="border-t border-gray-100" />

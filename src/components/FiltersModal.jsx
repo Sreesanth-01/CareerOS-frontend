@@ -5,13 +5,13 @@ import { Check, CheckCheck, CheckCircleIcon, Filter, X } from 'lucide-react';
 const FiltersModal = ({onClose,applyFilters}) => {
 
     const [filterBy,setFilterBy] = useState("none");
-    const [sortBy,setSortBy] = useState("desc");
-    const [status,setStatus] = useState("saved");
+    const [sortBy,setSortBy] = useState("none");
+    const [status,setStatus] = useState("SAVED");
     const [fromDate,setFromDate] = useState("");
     const [toDate,setToDate] = useState("");
 
     const handleClick = () =>{
-        applyFilters(filterBy, sortBy, status, fromDate, toDate);
+        applyFilters({filterBy, sortBy, status, fromDate, toDate});
         onClose();
     }
 
@@ -62,7 +62,7 @@ const FiltersModal = ({onClose,applyFilters}) => {
         {filterBy==="date" && (
             <div>
                 <Input type='date' label="From" name="fromDate" value={fromDate} onChange={(e)=>setFromDate(e.target.value)}></Input>
-                <Input type='date' label="To" name="ToDate" value={toDate} onChange={(e)=>setToDate(e.target.value)}></Input>
+                <Input type='date' label="To" name="toDate" value={toDate} onChange={(e)=>setToDate(e.target.value)}></Input>
             </div>
         ) }
 
@@ -72,12 +72,16 @@ const FiltersModal = ({onClose,applyFilters}) => {
         <h2 className='font-semibold'>Sort By:</h2>
         <div className='flex gap-4'>
             <div>
-                <input name='sortBy' value="asc" id='Asc' type='radio' onChange={(e)=>setSortBy(e.target.value)} />
+                <input name='sortBy' value="asc" id='Asc' type='radio' onChange={(e)=>setSortBy(e.target.value)} checked={sortBy==="asc"}/>
                 <label htmlFor='Asc'>Ascending</label>
             </div>
             <div>
-                <input name='sortBy' value="desc" id='Desc' type='radio' onChange={(e)=>setSortBy(e.target.value)} defaultChecked />
+                <input name='sortBy' value="desc" id='Desc' type='radio' onChange={(e)=>setSortBy(e.target.value)} checked={sortBy==="desc"}/>
                 <label htmlFor='Desc'>Descending</label>
+            </div>
+            <div>
+                <input name='sortBy' value="none" id='None' type='radio' onChange={(e)=>setSortBy(e.target.value)} checked={sortBy==="none"}/>
+                <label htmlFor='None'>None</label>
             </div>
         </div>
 
