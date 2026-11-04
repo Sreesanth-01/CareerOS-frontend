@@ -3,7 +3,7 @@ import { Building2, ChevronRight, MapPin } from 'lucide-react'
 
 const MyApplicationCard = ({application}) => {
   return (
-    <div className='grid w-full grid-cols-[1.2fr_1.2fr_1.2fr_30px] items-center gap-4'>
+    <div className='grid w-full grid-cols-[1.2fr_1.2fr_1.2fr_30px] items-center gap-4 cursor-pointer hover:shadow-md'>
       <div className='flex items-center min-w-0'>
         <div className='bg-gray-50 p-3 rounded-lg'>
           <Building2 size={30} nonScalingStroke />

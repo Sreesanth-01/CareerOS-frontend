@@ -1,21 +1,26 @@
 import React, { useState } from 'react'
 import Input from './Input'
-import { Filter, X } from 'lucide-react';
+import { Check, CheckCheck, CheckCircleIcon, Filter, X } from 'lucide-react';
 
-const FiltersModal = ({onClose}) => {
+const FiltersModal = ({onClose,applyFilters}) => {
 
-    const [filterBy,setFilterBy] = useState(null);
+    const [filterBy,setFilterBy] = useState("none");
     const [sortBy,setSortBy] = useState("desc");
-    const [status,setStatus] = useState("");
-    const [fromDate,setFromDate] = useState(null);
-    const [toDate,setToDate] = useState(null);
+    const [status,setStatus] = useState("saved");
+    const [fromDate,setFromDate] = useState("");
+    const [toDate,setToDate] = useState("");
+
+    const handleClick = () =>{
+        applyFilters(filterBy, sortBy, status, fromDate, toDate);
+        onClose();
+    }
 
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4'>
       <div className='relative w-full max-w-xl max-h-[85vh] overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-xl'>
         <div className='flex items-center justify-between p-2'>
             <div className='flex gap-2'>
-                <Filter className='border rounded'/>
+                <Filter/>
                 <h1 className='font-semibold'>Filter and Sort</h1>
             </div>
             <div className='cursor-pointer rounded-md p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900'>
@@ -26,15 +31,15 @@ const FiltersModal = ({onClose}) => {
             <h2 className='font-semibold'>Filter By:</h2>
             <div className='flex gap-4'>
                 <div>
-                    <input name='filterBy' value="status" id='Status' type='radio' onChange={(e)=>setFilterBy(e.target.value)}/>
+                    <input name='filterBy' value="status" id='Status' type='radio' onChange={(e)=>setFilterBy(e.target.value)} checked={filterBy==="status"}/>
                     <label htmlFor='Status'>Status</label>
                 </div>
                 <div>
-                    <input name='filterBy' value="date" id='Date' type='radio' onChange={(e)=>setFilterBy(e.target.value)} />
+                    <input name='filterBy' value="date" id='Date' type='radio' onChange={(e)=>setFilterBy(e.target.value)} checked={filterBy==="date"} />
                     <label htmlFor='Date'>Date</label>
                 </div>
                 <div>
-                    <input name='filterBy' value={null} id='None' type='radio' onChange={(e)=>setFilterBy(e.target.value)} defaultChecked/>
+                    <input name='filterBy' value="none" id='None' type='radio' onChange={(e)=>setFilterBy(e.target.value)} checked={filterBy==="none"}/>
                     <label htmlFor='None'>None</label>
                 </div>
             </div>
@@ -78,8 +83,10 @@ const FiltersModal = ({onClose}) => {
 
         
       </div>
-      <div className='flex justify-end gap-3 mb-4 p-4'>
-        <button className='border rounded-lg p-1'>Apply Filters</button>
+      <div className='flex justify-end p-2'>
+        <div className='cursor-pointer rounded-md p-2 text-green-500 transition hover:bg-green-100 hover:text-green-900'>
+            <CheckCheck onClick={handleClick} />
+        </div>
       </div>
       </div>
     </div>

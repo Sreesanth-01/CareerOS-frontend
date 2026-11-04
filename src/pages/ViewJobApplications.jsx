@@ -5,6 +5,7 @@ import MyApplicationCard from '../components/MyApplicationCard';
 import JobDetailsModal from '../components/JobDetailsModal';
 import { toast } from 'react-toastify';
 import FiltersModal from '../components/FiltersModal';
+import { Filter } from 'lucide-react';
 
 const ViewJobApplications = () => {
     const [jobData,setJobData] = useState([]);
@@ -13,6 +14,14 @@ const ViewJobApplications = () => {
     const [showFilters, setShowFilters] = useState(false);
 
     const [selectedJob,setSelectedJob] = useState(null);
+
+    const [filters,setFilters] = useState({
+        filterBy : "none",
+        sortBy : "desc",
+        status : "SAVED",
+        fromDate : "",
+        toDate : ""
+    });
 
     useEffect(()=>{
         fetchJobApplications();
@@ -48,11 +57,45 @@ const ViewJobApplications = () => {
         }
     }
 
+    const applyFilters = async({filterBy, sortBy, status, fromDate, toDate}) =>{
+       setFilters({filterBy,sortBy,status,fromDate,toDate});
+    }
+
+    const filteredJobs = jobData.filter((job)=>{
+        if(filters.filterBy === "status"){
+            return job.status === filters.status;
+        }
+
+        if(filters.filterBy === "date"){
+            const appliedDate = job.appliedDate;
+            if(filters.fromDate && appliedDate <filters.fromDate){
+                return false;
+            }
+            if(filters.toDate && appliedDate > filters.toDate){
+                return false;
+            }
+            return true;
+        }
+        return true; //if both no filter, take all. 
+    });
+
+    const sortedFilteredJobs = filteredJobs.sort((a,b)=>{
+        const dateA = new Date(a.appliedDate);
+        const dateB = new Date(b.appliedDate);
+
+        return filters.sortBy === "asc" ? dateA - dateB : dateB - dateA;
+    });
+
   return (
     <div className='min-h-screen bg-gray-50 py-10 px-4'>
-        <div className='w-full mb-8'>
-            <h1 className='text-3xl font-semibold mb-1'>My Applications</h1>
-            <p className='text-sm text-gray-500'>View and manage your job applications</p>
+        <div className='flex items-center justify-between'>
+            <div className='w-full mb-8'>
+                <h1 className='text-3xl font-semibold mb-1'>My Applications</h1>
+                <p className='text-sm text-gray-500'>View and manage your job applications</p>
+            </div>
+            <div className='cursor-pointer rounded-md p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900'>
+                <button className='cursor-pointer hover:text-gray-500' onClick={()=>setShowFilters(!showFilters)}><Filter/></button>
+            </div>
         </div>
         
         {jobData.length > 0 ?(
@@ -77,9 +120,8 @@ const ViewJobApplications = () => {
         {selectedJob && (
             <JobDetailsModal application={selectedJob} onClose={()=>setSelectedJob(null)} onEdit={editJob} onDelete={deleteJob} ></JobDetailsModal>
         )}
-        <button onClick={()=>setShowFilters(!showFilters)}>Filters</button>
         {showFilters && (
-            <FiltersModal  onClose={()=>setShowFilters(false)}/>
+            <FiltersModal  onClose={()=>setShowFilters(false)} applyFilters={applyFilters}/>
         )}
     </div>
   )
